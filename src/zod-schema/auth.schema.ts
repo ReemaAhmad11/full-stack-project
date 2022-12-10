@@ -57,8 +57,8 @@ export const userRegisterSchema = z.object({
         required_error: "Username is required! ",
         invalid_type_error: "Username most be String!",
       })
-      .min(3, "Name most be mare than 3 char")
-      .max(10, "Name most be less than 10 char"),
+      .min(3, "Username most be mare than 3 char")
+      .max(10, "Username most be less than 10 char"),
     password: z
       .string({
         required_error: "Password is required! ",
@@ -84,7 +84,7 @@ export const userRegisterSchema = z.object({
 
 export const loginSchema = z.object({
   body: z.object({
-    name: z.string({
+    username: z.string({
       required_error: "Username is required!",
       invalid_type_error: "Username most be String!",
     }),

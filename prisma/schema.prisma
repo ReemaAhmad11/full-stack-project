@@ -25,4 +25,5 @@ model Provider {
   phone       String @unique
   permission  Int
   projectName String
+  // payment     String
 }
