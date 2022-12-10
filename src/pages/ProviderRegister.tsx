@@ -17,9 +17,7 @@ const ProviderRegister = () => {
   const [username, setUsername] = useState("");
   const [phone, setPhone] = useState("");
   const [email, setEmail] = useState("");
-
   const [permission, setPermission] = useState(0);
-
   const [projectName, setProjectName] = useState("");
   const [password, setPassword] = useState("");
   const [password2, setPassword2] = useState("");
@@ -136,7 +134,7 @@ const ProviderRegister = () => {
             <Text>رقم التصريح</Text>
 
             <Input
-              onChange={(e) => setPermission(e.target.value)}
+              onChange={(e) => setPermission(e.target.valueAsNumber )}
               value={permission}
               type="number"
             />
