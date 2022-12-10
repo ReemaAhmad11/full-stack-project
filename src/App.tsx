@@ -1,20 +1,18 @@
-import * as React from "react"
-import {
-  ChakraProvider,
-  Image,
-  Button,
-  Box,
-  Text,
-  Link,
-  VStack,
-  Code,
-  Grid,
-  theme,
+import * as React from "react";
+import { ChakraProvider, theme } from "@chakra-ui/react";
+import { BrowserRouter, Route, Routes } from "react-router-dom";
+import { LoginPage } from "./pages/LoginPage";
+import { RegisterPage } from "./pages/RegisterPage";
 
-} from "@chakra-ui/react"
-
-export const App = () => (
-  <ChakraProvider>
- 
-  </ChakraProvider>
-)
+export const App = () => {
+  return (
+    <BrowserRouter>
+      <ChakraProvider theme={theme}>
+        <Routes>
+          <Route path="/login" element={<LoginPage />} />
+          <Route path="/register" element={<RegisterPage />} />
+        </Routes>
+      </ChakraProvider>
+    </BrowserRouter>
+  );
+};
