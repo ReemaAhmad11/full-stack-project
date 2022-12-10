@@ -19,8 +19,9 @@ import {
 import { Link, useNavigate } from "react-router-dom";
 
 export const RegisterPage = () => {
-  const [name, setName] = useState("");
+  // const [name, setName] = useState("");
   const [username, setUsername] = useState("");
+  const [phone, setPhone] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [password2, setPassword2] = useState("");
@@ -35,19 +36,22 @@ export const RegisterPage = () => {
         toast({
           title: `You passwords doesn't match`,
           status: "error",
-          duration: 3000,
+          duration: 8000,
           position: "top",
         });
         return;
       }
 
-      const request = await fetch("/api/v1/auth/register", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify({ username, password, email }),
-      });
+      const request = await fetch(
+        "http://localhost:5001/api/v1/auth/userRegister",
+        {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify({ username, password, email, phone }),
+        }
+      );
 
       const data = await request.json();
 
@@ -55,7 +59,7 @@ export const RegisterPage = () => {
         toast({
           title: data.message,
           status: "error",
-          duration: 3000,
+          duration: 4000,
           position: "top",
         });
         return;
@@ -64,7 +68,7 @@ export const RegisterPage = () => {
       toast({
         title: data.message,
         status: "success",
-        duration: 3000,
+        duration: 4000,
         position: "top",
       });
       navigate("/login");
@@ -72,7 +76,7 @@ export const RegisterPage = () => {
       toast({
         title: "Server Error !",
         status: "error",
-        duration: 3000,
+        duration: 4000,
         position: "top",
       });
     }
@@ -80,21 +84,11 @@ export const RegisterPage = () => {
 
   return (
     <Flex justifyContent="center" alignItems="center" height="100vh">
-      <VStack spacing="2rem" width="20rem" rounded="xl" p="2" boxShadow={"lg"}>
+      <VStack spacing="1rem" width="20rem" rounded="xl" p="2" boxShadow={"lg"}>
         <Heading color={"#2C6B41"}>إنشاء حساب جديد </Heading>
         <Text>من هنا تبدأ</Text>
         <VStack align="left" spacing="1rem" width="100%" dir="rtl" p="1">
-          <Box>
-            <Text>
-              <QuestionIcon w="6" h="4" mb="2" color="#85BD57" /> الإسم
-            </Text>
-            <Input
-              onChange={(e) => setName(e.target.value)}
-              value={name}
-              type="text"
-            />
-          </Box>
-
+         
           <Box>
             <Text>
               <CheckCircleIcon w="6" h="4" mb="1.5" color="#85BD57" />
@@ -107,6 +101,14 @@ export const RegisterPage = () => {
             />
           </Box>
           <Box>
+            <Text>رقم الجوال</Text>
+            <Input
+              onChange={(e) => setPhone(e.target.value)}
+              value={phone}
+              type="text"
+            />
+          </Box>
+          <Box>
             <Text>البريد الإلكتروني</Text>
             <Input
               onChange={(e) => setEmail(e.target.value)}
@@ -114,6 +116,7 @@ export const RegisterPage = () => {
               type="email"
             />
           </Box>
+
           <Box>
             <Text>
               {" "}

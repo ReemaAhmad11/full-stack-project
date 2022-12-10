@@ -17,7 +17,7 @@ export const LoginPage = () => {
   const toast = useToast();
   const submitLogin = async () => {
     try {
-      const request = await fetch("/api/v1/auth/login", {
+      const request = await fetch("http://localhost:5001/api/v1/auth/login", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
@@ -25,7 +25,7 @@ export const LoginPage = () => {
         body: JSON.stringify({ username, password }),
       });
       const data = await request.json();
-      if (request.status !== 200) {
+      if (request.status !== 201) {
         toast({
           title: data.message,
           status: "error",
@@ -55,7 +55,7 @@ export const LoginPage = () => {
   return (
     <Flex justifyContent="center" alignItems="center" height="100vh">
       <VStack spacing="1.5" width="20rem">
-        <Heading color={"#2C6B41"} >حيّهم</Heading>
+        <Heading color={"#2C6B41"}>حيّهم</Heading>
         <Text>قم بتسجيل الدخول لتذوق شيئاً رائعاً</Text>
         <LoginForm
           username={username}
@@ -65,9 +65,11 @@ export const LoginPage = () => {
           submitLogin={submitLogin}
         />
         <HStack>
-          <Text color={"#2C6B41"} >
+          <Text color={"#2C6B41"}>
             {" "}
-            إذا لم يكن لك حساب بالفعل <Link to="/register">اضغط هنا </Link>{" "}
+            إذا لم يكن لك حساب بالفعل <Link to="/userRegister">
+              اضغط هنا{" "}
+            </Link>{" "}
             للإنضمام لنا
           </Text>
         </HStack>
