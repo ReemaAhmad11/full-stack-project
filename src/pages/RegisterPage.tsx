@@ -10,16 +10,10 @@ import {
   HStack,
 } from "@chakra-ui/react";
 import { useState } from "react";
-import {
-  QuestionIcon,
-  EmailIcon,
-  CheckCircleIcon,
-  UnlockIcon,
-} from "@chakra-ui/icons";
+import { CheckCircleIcon, UnlockIcon } from "@chakra-ui/icons";
 import { Link, useNavigate } from "react-router-dom";
 
 export const RegisterPage = () => {
-  // const [name, setName] = useState("");
   const [username, setUsername] = useState("");
   const [phone, setPhone] = useState("");
   const [email, setEmail] = useState("");
@@ -88,7 +82,6 @@ export const RegisterPage = () => {
         <Heading color={"#2C6B41"}>إنشاء حساب جديد </Heading>
         <Text>من هنا تبدأ</Text>
         <VStack align="left" spacing="1rem" width="100%" dir="rtl" p="1">
-         
           <Box>
             <Text>
               <CheckCircleIcon w="6" h="4" mb="1.5" color="#85BD57" />
