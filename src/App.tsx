@@ -6,6 +6,7 @@ import { RegisterPage } from "./pages/RegisterPage";
 import ProtectedRoute from "./componants/ProtectedRoute";
 import NavBar from "./componants/NavBar";
 import Footer from "./componants/Footer";
+import HomeCustomer from "./componants/HomeCustomer";
 
 export const App = () => {
   return (
@@ -15,7 +16,10 @@ export const App = () => {
         <Routes>
           <Route path="/login" element={<LoginPage />} />
           <Route path="/userRegister" element={<RegisterPage />} />
-          <Route element={<ProtectedRoute />}></Route>
+
+          <Route element={<ProtectedRoute />}>
+            <Route path="/" element={<HomeCustomer />} />
+          </Route>
         </Routes>
         <Footer />
       </ChakraProvider>
