@@ -4,11 +4,18 @@ import { ChakraProvider } from "@chakra-ui/react";
 import Footer from "./components/Footer";
 import NavBar from "./components/NavBar";
 import Login from "./components/Login";
+import Payment from "./components/PaymetInformation";
+import Prodect from './components/HomePageProvider'
+import AddNewPost from "./components/AddPostToProvider";
 
 export const App = () => (
-  <ChakraProvider>
+  <ChakraProvider >
     <NavBar />
-    <Login />
+
+    <Prodect/>
+    <Payment/>
     <Footer />
+
+  
   </ChakraProvider>
 );
