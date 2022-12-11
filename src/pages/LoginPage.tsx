@@ -5,9 +5,10 @@ import {
   VStack,
   useToast,
   HStack,
+  Link,
 } from "@chakra-ui/react";
 import { useState } from "react";
-import { Link, useNavigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import LoginForm from "../componants/login/LoginForm";
 
 export const LoginPage = () => {
@@ -53,9 +54,9 @@ export const LoginPage = () => {
   };
 
   return (
-    <Flex justifyContent="center" alignItems="center" height="100vh">
+    <Flex justifyContent="center" alignItems="center" height="80vh">
       <VStack spacing="1.5" width="20rem">
-        <Heading color={"#2C6B41"}>حيّهم</Heading>
+        <Heading color={"green.700"}>مرحباً</Heading>
         <Text>قم بتسجيل الدخول لتذوق شيئاً رائعاً</Text>
         <LoginForm
           username={username}
@@ -65,10 +66,10 @@ export const LoginPage = () => {
           submitLogin={submitLogin}
         />
         <HStack>
-          <Text color={"#2C6B41"}>
-            {" "}
-            إذا لم يكن لك حساب بالفعل <Link to="/userRegister">
-              اضغط هنا{" "}
+          <Text color={"black"}>
+            إذا لم يكن لك حساب بالفعل{" "}
+            <Link color="#079F4D" href="/userRegister">
+              اضغط هنا
             </Link>{" "}
             للإنضمام لنا
           </Text>

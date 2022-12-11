@@ -1,4 +1,4 @@
-import { VStack, Input, Button, Text, Box,} from "@chakra-ui/react";
+import { VStack, Input, Button, Text, Box, Stack } from "@chakra-ui/react";
 import { CheckCircleIcon, UnlockIcon } from "@chakra-ui/icons";
 import React from "react";
 
@@ -28,7 +28,10 @@ const LoginForm = ({
       p="8"
     >
       <Box>
-        <Text> <CheckCircleIcon  w='6' h='4' mb='1.5' color="#85BD57"/> اسم المستخدم </Text>
+        <Text>
+          {" "}
+          <CheckCircleIcon w="6" h="4" mb="1.5" color="green" /> اسم المستخدم{" "}
+        </Text>
         <Input
           onChange={(e) => setUsername(e.target.value)}
           value={username}
@@ -36,7 +39,11 @@ const LoginForm = ({
         />
       </Box>
       <Box>
-        <Text> <UnlockIcon w='6' h='4' mb='2' color="#85BD57" />كلمة المرور </Text>
+        <Text>
+          {" "}
+          <UnlockIcon w="6" h="4" mb="2" color="green" />
+          كلمة المرور{" "}
+        </Text>
         <Input
           onChange={(e) => setPassword(e.target.value)}
           value={password}
@@ -44,7 +51,9 @@ const LoginForm = ({
         />
       </Box>
 
-      <Button onClick={submitLogin} bg='#85BD57'>دخول</Button>
+      <Button onClick={submitLogin} bg="#079F4D">
+        دخول
+      </Button>
     </VStack>
   );
 };

@@ -18,11 +18,13 @@ import {
   EmailIcon,
 } from "@chakra-ui/icons";
 import { useNavigate } from "react-router-dom";
-
-export const RegisterPage = () => {
+const ProviderRegister = () => {
+  const [fullname, setFullname] = useState("");
   const [username, setUsername] = useState("");
   const [phone, setPhone] = useState("");
   const [email, setEmail] = useState("");
+  const [permission, setPermission] = useState("");
+  const [projectName, setProjectName] = useState("");
   const [password, setPassword] = useState("");
   const [password2, setPassword2] = useState("");
 
@@ -36,20 +38,28 @@ export const RegisterPage = () => {
         toast({
           title: `You passwords doesn't match`,
           status: "error",
-          duration: 8000,
+          duration: 4000,
           position: "top",
         });
         return;
       }
 
       const request = await fetch(
-        "http://localhost:5001/api/v1/auth/userRegister",
+        "http://localhost:5001/api/v1/auth/providerRegister",
         {
           method: "POST",
           headers: {
             "Content-Type": "application/json",
           },
-          body: JSON.stringify({ username, password, email, phone }),
+          body: JSON.stringify({
+            fullname,
+            username,
+            password,
+            email,
+            phone,
+            permission: Number(permission),
+            projectName,
+          }),
         }
       );
 
@@ -81,13 +91,23 @@ export const RegisterPage = () => {
       });
     }
   };
-
   return (
-    <Flex justifyContent="center" alignItems="center" height="90vh">
-      <VStack spacing="1rem" width="25rem" rounded="xl" p="7" boxShadow={"lg"}>
+    <Flex justifyContent="center" alignItems="center" height="100vh">
+      <VStack spacing="1rem" width="30rem" rounded="xl" p="9" boxShadow={"lg"}>
         <Heading color={"green.700"}>إنشاء حساب جديد </Heading>
         <Text>من هنا تبدأ</Text>
         <VStack align="left" spacing="1rem" width="100%" dir="rtl" p="1">
+          <Box>
+            <Text>
+              <CheckCircleIcon w="6" h="4" mb="1.5" color="#079F4D" />
+              الإسم الثلاثي
+            </Text>
+            <Input
+              onChange={(e) => setFullname(e.target.value)}
+              value={fullname}
+              type="text"
+            />
+          </Box>
           <Box>
             <Text>
               <CheckCircleIcon w="6" h="4" mb="1.5" color="#079F4D" />
@@ -104,6 +124,7 @@ export const RegisterPage = () => {
               <PhoneIcon w="6" h="4" mb="1.5" color="#079F4D" />
               رقم الجوال
             </Text>
+
             <Input
               onChange={(e) => setPhone(e.target.value)}
               value={phone}
@@ -122,6 +143,30 @@ export const RegisterPage = () => {
             />
           </Box>
 
+          <Box>
+            <Text>
+              <CheckCircleIcon w="6" h="4" mb="1.5" color="#079F4D" />
+              رقم التصريح
+            </Text>
+
+            <Input
+              onChange={(e) => setPermission(e.target.value)}
+              value={permission}
+              type="number"
+            />
+          </Box>
+
+          <Box>
+            <Text>
+              <CheckCircleIcon w="6" h="4" mb="1.5" color="#079F4D" />
+              اسم المشروع
+            </Text>
+            <Input
+              onChange={(e) => setProjectName(e.target.value)}
+              value={projectName}
+              type="text"
+            />
+          </Box>
           <Box>
             <Text>
               {" "}
@@ -155,10 +200,12 @@ export const RegisterPage = () => {
             هل لديك حساب بالفعل ؟{" "}
             <Link color="#079F4D" href="/login">
               تسجيل الدخول
-            </Link>
+            </Link>{" "}
           </Text>
         </HStack>
       </VStack>
     </Flex>
   );
 };
+
+export default ProviderRegister;
