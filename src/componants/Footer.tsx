@@ -41,10 +41,10 @@ const Email = () => {
               }}
             />
             <IconButton
-              bg={useColorModeValue("green", "green.800")}
-              color={useColorModeValue("green", "white.800")}
+              bg={useColorModeValue("#079F4D", "whiteAlpha.800")}
+              color={useColorModeValue("black", "whiteAlpha.800")}
               _hover={{
-                bg: "green.200",
+                bg: "green.400",
               }}
               aria-label="Subscribe"
               icon={<BiMailSend />}

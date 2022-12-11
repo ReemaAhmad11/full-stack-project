@@ -8,16 +8,22 @@ import {
   Button,
   useToast,
   HStack,
+  Link,
 } from "@chakra-ui/react";
 import { useState } from "react";
-import { CheckCircleIcon, UnlockIcon } from "@chakra-ui/icons";
-import { Link, useNavigate } from "react-router-dom";
+import {
+  CheckCircleIcon,
+  UnlockIcon,
+  PhoneIcon,
+  EmailIcon,
+} from "@chakra-ui/icons";
+import { useNavigate } from "react-router-dom";
 const ProviderRegister = () => {
   const [fullname, setFullname] = useState("");
   const [username, setUsername] = useState("");
   const [phone, setPhone] = useState("");
   const [email, setEmail] = useState("");
-  const [permission, setPermission] = useState(0);
+  const [permission, setPermission] = useState("");
   const [projectName, setProjectName] = useState("");
   const [password, setPassword] = useState("");
   const [password2, setPassword2] = useState("");
@@ -51,7 +57,7 @@ const ProviderRegister = () => {
             password,
             email,
             phone,
-            permission,
+            permission: Number(permission),
             projectName,
           }),
         }
@@ -87,13 +93,13 @@ const ProviderRegister = () => {
   };
   return (
     <Flex justifyContent="center" alignItems="center" height="100vh">
-      <VStack spacing="1rem" width="20rem" rounded="xl" p="2" boxShadow={"lg"}>
-        <Heading color={"#2C6B41"}>إنشاء حساب جديد </Heading>
+      <VStack spacing="1rem" width="30rem" rounded="xl" p="9" boxShadow={"lg"}>
+        <Heading color={"green.700"}>إنشاء حساب جديد </Heading>
         <Text>من هنا تبدأ</Text>
         <VStack align="left" spacing="1rem" width="100%" dir="rtl" p="1">
           <Box>
             <Text>
-              <CheckCircleIcon w="6" h="4" mb="1.5" color="#85BD57" />
+              <CheckCircleIcon w="6" h="4" mb="1.5" color="#079F4D" />
               الإسم الثلاثي
             </Text>
             <Input
@@ -104,7 +110,7 @@ const ProviderRegister = () => {
           </Box>
           <Box>
             <Text>
-              <CheckCircleIcon w="6" h="4" mb="1.5" color="#85BD57" />
+              <CheckCircleIcon w="6" h="4" mb="1.5" color="#079F4D" />
               اسم المستخدم
             </Text>
             <Input
@@ -114,7 +120,11 @@ const ProviderRegister = () => {
             />
           </Box>
           <Box>
-            <Text>رقم الجوال</Text>
+            <Text>
+              <PhoneIcon w="6" h="4" mb="1.5" color="#079F4D" />
+              رقم الجوال
+            </Text>
+
             <Input
               onChange={(e) => setPhone(e.target.value)}
               value={phone}
@@ -122,7 +132,10 @@ const ProviderRegister = () => {
             />
           </Box>
           <Box>
-            <Text>البريد الإلكتروني</Text>
+            <Text>
+              <EmailIcon w="6" h="4" mb="1.5" color="#079F4D" />
+              البريد الإلكتروني
+            </Text>
             <Input
               onChange={(e) => setEmail(e.target.value)}
               value={email}
@@ -131,17 +144,23 @@ const ProviderRegister = () => {
           </Box>
 
           <Box>
-            <Text>رقم التصريح</Text>
+            <Text>
+              <CheckCircleIcon w="6" h="4" mb="1.5" color="#079F4D" />
+              رقم التصريح
+            </Text>
 
             <Input
-              onChange={(e) => setPermission(e.target.valueAsNumber )}
+              onChange={(e) => setPermission(e.target.value)}
               value={permission}
               type="number"
             />
           </Box>
 
           <Box>
-            <Text>اسم المشروع</Text>
+            <Text>
+              <CheckCircleIcon w="6" h="4" mb="1.5" color="#079F4D" />
+              اسم المشروع
+            </Text>
             <Input
               onChange={(e) => setProjectName(e.target.value)}
               value={projectName}
@@ -151,7 +170,7 @@ const ProviderRegister = () => {
           <Box>
             <Text>
               {" "}
-              <UnlockIcon w="6" h="4" mb="2" color="#85BD57" />
+              <UnlockIcon w="6" h="4" mb="2" color="#079F4D" />
               كلمة المرور{" "}
             </Text>
             <Input
@@ -163,7 +182,7 @@ const ProviderRegister = () => {
           <Box>
             <Text>
               {" "}
-              <UnlockIcon w="6" h="4" mb="2" color="#85BD57" />
+              <UnlockIcon w="6" h="4" mb="2" color="#079F4D" />
               تأكيد كلمة المرور{" "}
             </Text>
             <Input
@@ -172,13 +191,16 @@ const ProviderRegister = () => {
               type="password"
             />
           </Box>
-          <Button onClick={submitRegister} bg="#85BD57">
+          <Button onClick={submitRegister} bg="#079F4D">
             إنشاء الحساب
           </Button>
         </VStack>
         <HStack>
           <Text>
-            هل لديك حساب بالفعل ؟ <Link to="/login">تسجيل الدخول</Link>{" "}
+            هل لديك حساب بالفعل ؟{" "}
+            <Link color="#079F4D" href="/login">
+              تسجيل الدخول
+            </Link>{" "}
           </Text>
         </HStack>
       </VStack>
