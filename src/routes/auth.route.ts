@@ -7,7 +7,6 @@ import {
 import validate from "../middlewares/validate";
 import {
   loginSchema,
-  providerRegisterSchema,
   userRegisterSchema,
 } from "../zod-schema/auth.schema";
 
@@ -16,7 +15,7 @@ const router = express.Router();
 router.post("/userRegister", validate(userRegisterSchema), userRegisterHandler);
 router.post(
   "/providerRegister",
-  validate(providerRegisterSchema),
+  validate(userRegisterSchema),
   providerRegisterHandler
 );
 router.post("/login", validate(loginSchema), loginHandler);

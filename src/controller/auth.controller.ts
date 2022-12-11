@@ -1,4 +1,4 @@
-import { Provider, User } from "@prisma/client";
+import { User } from "@prisma/client";
 import { Request, Response } from "express";
 import { prisma } from "../config/db";
 import * as argon2 from "argon2";
@@ -59,9 +59,9 @@ export const providerRegisterHandler = async (req: Request, res: Response) => {
       phone,
       permission,
       projectName,
-    } = req.body as Provider;
+    } = req.body as User;
     const hashedPassword = await argon2.hash(password);
-    await prisma.provider.create({
+    await prisma.user.create({
       data: {
         fullname,
         username,

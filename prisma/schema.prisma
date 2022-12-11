@@ -10,20 +10,14 @@ datasource db {
 
 model User {
   id       String @id @default(uuid())
+  fullname String?
   password String
   email    String @unique
   phone    String @unique
   username String @unique
+  permission  Int?
+  projectName String?
+// payment     String
 }
 
-model Provider {
-  id          String @id @default(uuid())
-  fullname    String
-  username    String @unique
-  password    String
-  email       String @unique
-  phone       String @unique
-  permission  Int
-  projectName String
-  // payment     String
-}
+
