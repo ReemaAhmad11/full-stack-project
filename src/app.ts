@@ -2,6 +2,7 @@ import express from "express";
 import "dotenv/config";
 import { connectDB } from "./config/db";
 import authRouter from "./routes/auth.route";
+import ItemRouter from "./routes/item.route";
 import cors from "cors";
 
 const app = express();
@@ -12,6 +13,7 @@ connectDB();
 
 //Middlwares
 app.use("/api/v1/auth", authRouter);
+app.use("/api/v1/item", ItemRouter);
 
 //Port
 const PORT = process.env.PORT || 5001;

@@ -6,7 +6,7 @@ import * as jwt from "jsonwebtoken";
 
 export const loginHandler = async (req: Request, res: Response) => {
   const { username, password } = req.body as User;
-  const user = await prisma.user.findFirst({
+  const user = await prisma.user.findUnique({
     where: { username },
   });
   if (!user) {
@@ -81,3 +81,4 @@ export const providerRegisterHandler = async (req: Request, res: Response) => {
     });
   }
 };
+

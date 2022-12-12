@@ -5,19 +5,43 @@ generator client {
 datasource db {
   provider     = "mysql"
   url          = env("DATABASE_URL")
-  relationMode = "prisma"
+  // relationMode = "prisma"
 }
 
 model User {
-  id       String @id @default(uuid())
-  fullname String?
-  password String
-  email    String @unique
-  phone    String @unique
-  username String @unique
+  id          String @id @default(uuid())
+  fullname    String?
+  password    String
+  email       String @unique
+  phone       String @unique
+  username    String @unique
   permission  Int?
   projectName String?
+  item Item[]
 // payment     String
 }
 
 
+
+
+
+model Item {
+  id                 String @id @default(uuid())
+  productName        String 
+  productDescription String
+  productPrice       Int
+  productType        Type 
+  Image              String?
+  user_id            String
+  user User @relation(fields: [user_id],references: [id])
+  //  @@index([user_id])
+}
+
+enum Type {
+  Sweets
+  Traditionals
+  MainDishes
+  Drinks
+  Healthy
+  Appetizers
+}
