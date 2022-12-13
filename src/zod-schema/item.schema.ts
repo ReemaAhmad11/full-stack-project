@@ -7,7 +7,7 @@ export const Item = z.object({
         required_error: "Product name of prodect is required! ",
         invalid_type_error: "Product name  most be String!",
       })
-      .min(10, "Product name most be mare than 10 char")
+      .min(3, "Product name most be mare than 3 char")
       .max(20, "Product name most be less than 20 char"),
 
     productDescription: z
@@ -23,12 +23,12 @@ export const Item = z.object({
       invalid_type_error: "Product price most be String!",
     }),
     productType: z.enum([
-      "Sweets",
-      "Traditionals",
-      "MainDishes",
-      "Drinks",
+      "Sweet",
+      "Traditional",
+      "MainDishe",
+      "Drink",
       "Healthy",
-      "Appetizers",
+      "Appetizer",
     ]),
     Image: z.string().nullish(),
   }),
@@ -76,7 +76,7 @@ export const updatePostSchema = z.object({
 
 export const updateByIDSchema = z.object({
   params: z.object({
-    id: z.string({
+    itemid: z.string({
       required_error: "ID is required !",
       invalid_type_error: "Item id must be a string",
     }),

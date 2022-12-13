@@ -21,6 +21,8 @@ export const addItemHandler = async (req: Request, res: Response) => {
   const { productName, productDescription, productPrice, productType, Image } =
     req.body as Item;
   const user = res.locals.user as IUser;
+  console.log(user, "sssss");
+  console.log("req.body", req.body);
 
   await prisma.item.create({
     data: {
@@ -33,8 +35,8 @@ export const addItemHandler = async (req: Request, res: Response) => {
     },
   });
 
-  return res.status(201).json({
-    message: "New Item created for user : " + user.id,
+  return res.status(200).json({
+    message: "New Item created",
   });
 };
 
@@ -42,11 +44,11 @@ export const updateItemHandler = async (req: Request, res: Response) => {
   try {
     const user = res.locals.user as IUser;
     const updatedItem = req.body as Item;
-    const { id } = req.params as updatePostSchemaType;
+    const { itemid } = req.params as updatePostSchemaType;
 
     const isUpdated = await prisma.item.updateMany({
       where: {
-        id: id,
+        id: itemid,
         user_id: user.id,
       },
       data: updatedItem,
@@ -87,6 +89,6 @@ export const deleteItemHandler = async (req: Request, res: Response) => {
   }
 
   return res.status(200).json({
-    message: "Todo deleted !",
+    message: "Item deleted !",
   });
 };

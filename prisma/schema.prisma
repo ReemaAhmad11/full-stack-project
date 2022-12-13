@@ -5,7 +5,7 @@ generator client {
 datasource db {
   provider     = "mysql"
   url          = env("DATABASE_URL")
-  // relationMode = "prisma"
+   relationMode = "prisma"
 }
 
 model User {
@@ -23,8 +23,6 @@ model User {
 
 
 
-
-
 model Item {
   id                 String @id @default(uuid())
   productName        String 
@@ -34,14 +32,14 @@ model Item {
   Image              String?
   user_id            String
   user User @relation(fields: [user_id],references: [id])
-  //  @@index([user_id])
+  @@index([user_id])
 }
 
 enum Type {
-  Sweets
-  Traditionals
-  MainDishes
-  Drinks
+  Sweet
+  Traditional
+  MainDishe
+  Drink
   Healthy
-  Appetizers
+  Appetizer
 }

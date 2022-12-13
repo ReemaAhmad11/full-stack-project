@@ -18,6 +18,11 @@ const router = express.Router();
 router.get("/", protect, getAllItemHandler);
 router.post("/", protect, addItemHandler);
 router.put("/:itemid", protect, validate(updatePostSchema), updateItemHandler);
-router.delete("/:itemid", protect, validate(deletePostSchema), deleteItemHandler);
+router.delete(
+  "/:itemid",
+  protect,
+  validate(deletePostSchema),
+  deleteItemHandler
+);
 
 export default router;
