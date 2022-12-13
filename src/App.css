@@ -1,0 +1,87 @@
+
+ #container{
+   color: rgb(76, 172, 140);
+
+text-align: center;
+justify-content: space-between;
+ }
+ .text{
+
+color: black;
+
+ }
+ 
+ .foodimage{
+   display: grid;
+   grid-template-columns: repeat(4,1fr);
+   grid-template-rows: repeat(4,1fr);
+    background-color: rgb(158, 201, 163);
+    clip-path: circle(700% at 80% 80%);
+    border-radius: 30% 70% 100% 0% / 0% 0% 150% 0% ;
+    height: 600px;
+    margin-right: -400px;
+   
+ }
+ 
+
+ #imageone{
+    width: 300px; 
+     clip-path: circle(40% at 50% 50%); 
+
+ }
+ #imagetwe{
+    width: 300px;
+    clip-path: circle(40% at 50% 50%);
+    
+
+
+    
+
+ }
+ #imagethree{
+    width: 300px;
+    clip-path: circle(40% at 50% 50%);
+    
+
+    
+
+ }
+ #imagefour{
+    width: 300px;
+    clip-path: circle(40% at 50% 50%);
+
+
+    
+
+
+
+ }
+ #imagefive{
+    width: 300px;
+    clip-path: circle(40% at 50% 50%);
+    
+
+
+ }
+
+ #imagesix{
+    width: 300px;
+    clip-path: circle(40% at 50% 50%);
+    
+
+
+
+
+
+
+ } 
+
+
+ #imagesaven{
+
+   width: 150px;
+   clip-path: circle(40% at 50% 50%);
+   justify-self: left;
+   align-self: left;
+ }
+
