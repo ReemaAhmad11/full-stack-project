@@ -18,7 +18,7 @@ export const LoginPage = () => {
   const toast = useToast();
   const submitLogin = async () => {
     try {
-      const request = await fetch("http://localhost:5001/api/v1/auth/login", {
+      const request = await fetch("/api/v1/auth/login", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",

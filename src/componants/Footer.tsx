@@ -90,7 +90,13 @@ const SocialButton = ({
 
 export default function SmallWithLogoLeft() {
   return (
-    <Box dir="rtl" bg={useColorModeValue("gray.50", "white.900")}>
+    <Box
+      dir="rtl"
+      bg={useColorModeValue("gray.50", "white.900")}
+      w="100%"
+      position={"absolute"}
+      bottom={0}
+    >
       <Container
         as={Stack}
         maxW={"6xl"}

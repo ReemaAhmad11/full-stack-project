@@ -34,7 +34,7 @@ export const RegisterPage = () => {
     try {
       if (password !== password2) {
         toast({
-          title: `You passwords doesn't match`,
+          title: `Your passwords doesn't match`,
           status: "error",
           duration: 8000,
           position: "top",
@@ -43,7 +43,7 @@ export const RegisterPage = () => {
       }
 
       const request = await fetch(
-        "http://localhost:5001/api/v1/auth/userRegister",
+        "/api/v1/auth/userRegister",
         {
           method: "POST",
           headers: {

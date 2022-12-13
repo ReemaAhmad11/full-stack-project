@@ -36,7 +36,7 @@ const ProviderRegister = () => {
     try {
       if (password !== password2) {
         toast({
-          title: `You passwords doesn't match`,
+          title: `Your passwords doesn't match`,
           status: "error",
           duration: 4000,
           position: "top",
@@ -44,24 +44,21 @@ const ProviderRegister = () => {
         return;
       }
 
-      const request = await fetch(
-        "http://localhost:5001/api/v1/auth/providerRegister",
-        {
-          method: "POST",
-          headers: {
-            "Content-Type": "application/json",
-          },
-          body: JSON.stringify({
-            fullname,
-            username,
-            password,
-            email,
-            phone,
-            permission: Number(permission),
-            projectName,
-          }),
-        }
-      );
+      const request = await fetch("/api/v1/auth/providerRegister", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          fullname,
+          username,
+          password,
+          email,
+          phone,
+          permission: Number(permission),
+          projectName,
+        }),
+      });
 
       const data = await request.json();
 
