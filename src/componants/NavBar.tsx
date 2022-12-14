@@ -3,9 +3,10 @@ const NavBar = () => {
   return (
     <Box bg={useColorModeValue("gray.100", "dark")} px={20}>
       <Flex h={20} alignItems={"center"} justifyContent={"space-between"}>
-        <Flex dir="rtl" ml="9" mt="4">
-          <Text fontSize="3xl">قُوتُ</Text>
-        </Flex>
+        <Text fontSize="3xl">قُوتُ</Text>
+        {/* <Text fontSize="lg"> منصة قُوتُ </Text> */}
+        {/* <Text fontSize="lg"> الأطccباق</Text> */}
+
         <Avatar
           mb="4"
           size={"xl"}
@@ -13,6 +14,9 @@ const NavBar = () => {
         />
       </Flex>
     </Box>
+
+
+    
   );
 };
 

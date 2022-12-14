@@ -7,7 +7,10 @@ import ProtectedRoute from "./componants/ProtectedRoute";
 import NavBar from "./componants/NavBar";
 import Footer from "./componants/Footer";
 import HomeCustomer from "./componants/HomeCustomer";
+
 import ProviderRegister from "./pages/ProviderRegister";
+import Welcome from "./componants/Welcome";
+import Welcometow from './componants/Welcometow';
 
 export const App = () => {
   return (
@@ -18,7 +21,8 @@ export const App = () => {
           <Route path="/login" element={<LoginPage />} />
           <Route path="/userRegister" element={<RegisterPage />} />
           <Route path="/providerRegister" element={<ProviderRegister />} />
-
+          <Route path="/welcome" element={<Welcome />} />
+          <Route path="/welcometow" element={<Welcometow />} />
           <Route element={<ProtectedRoute />}>
             <Route path="/" element={<HomeCustomer />} />
           </Route>
