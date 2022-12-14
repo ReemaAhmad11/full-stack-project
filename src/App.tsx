@@ -11,6 +11,7 @@ import HomeCustomer from "./componants/HomeCustomer";
 import ProviderRegister from "./pages/ProviderRegister";
 import Welcome from "./componants/Welcome";
 import Welcometow from './componants/Welcometow';
+import Homepage from './componants/Homepage';
 
 export const App = () => {
   return (
@@ -24,6 +25,7 @@ export const App = () => {
           <Route path="/welcome" element={<Welcome />} />
           <Route path="/welcometow" element={<Welcometow />} />
           <Route element={<ProtectedRoute />}>
+            <Route  path="/homepage" element={<Homepage/>}/>
             <Route path="/" element={<HomeCustomer />} />
           </Route>
         </Routes>

@@ -8,6 +8,7 @@ import {
   useColorModeValue,
   createIcon,
   Link,
+  Image,
 } from "@chakra-ui/react";
 
 function Welcometow() {
@@ -91,6 +92,24 @@ function Welcometow() {
           </Stack>
         </Stack>
       </Container>
+      <Image
+        src=" https://l.top4top.io/p_2539pe7051.png"
+        w="20%"
+        h="30vh"
+        position={"absolute"}
+        top={"30%"}
+        left={"55%"}
+      ></Image>
+
+
+{/* <Image
+        src=" https://i.pinimg.com/564x/eb/f0/6f/ebf06fdfb4a8f64542e9f0b60e8472af.jpg"
+        w="40%"
+        h="40vh"
+        position={"absolute"}
+        top={"30%"}
+        left={"2%"}
+      ></Image> */}
     </>
   );
 }
@@ -109,5 +128,8 @@ const Arrow = createIcon({
 });
 //     )
 // }
+
+
+
 
 export default Welcometow;
