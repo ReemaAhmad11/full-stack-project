@@ -8,7 +8,6 @@ import {
   Button,
   useToast,
   HStack,
-  Link,
 } from "@chakra-ui/react";
 import { useState } from "react";
 import {
@@ -17,9 +16,9 @@ import {
   PhoneIcon,
   EmailIcon,
 } from "@chakra-ui/icons";
-import { useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 
-export const RegisterPage = () => {
+export const UserRegisterPage = () => {
   const [username, setUsername] = useState("");
   const [phone, setPhone] = useState("");
   const [email, setEmail] = useState("");
@@ -42,16 +41,19 @@ export const RegisterPage = () => {
         return;
       }
 
-      const request = await fetch(
-        "/api/v1/auth/userRegister",
-        {
-          method: "POST",
-          headers: {
-            "Content-Type": "application/json",
-          },
-          body: JSON.stringify({ username, password, email, phone }),
-        }
-      );
+      const request = await fetch("/api/v1/auth/userRegister", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          username,
+          password,
+          email,
+          phone,
+          role: "Visitor",
+        }),
+      });
 
       const data = await request.json();
 
@@ -83,7 +85,7 @@ export const RegisterPage = () => {
   };
 
   return (
-    <Flex justifyContent="center" alignItems="center" height="90vh">
+    <Flex justifyContent="center" alignItems="center" height="90vh" border="2">
       <VStack spacing="1rem" width="25rem" rounded="xl" p="7" boxShadow={"lg"}>
         <Heading color={"green.700"}>إنشاء حساب جديد </Heading>
         <Text>من هنا تبدأ</Text>
@@ -152,10 +154,7 @@ export const RegisterPage = () => {
         </VStack>
         <HStack>
           <Text>
-            هل لديك حساب بالفعل ؟{" "}
-            <Link color="#079F4D" href="/login">
-              تسجيل الدخول
-            </Link>
+            هل لديك حساب بالفعل ؟ <Link to="/Homecustomer">تسجيل الدخول</Link>
           </Text>
         </HStack>
       </VStack>

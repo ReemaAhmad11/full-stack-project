@@ -11,16 +11,17 @@ import {
 import { useNavigate, Link } from "react-router-dom";
 
 export default function Homeustomer() {
-  const navigate = useNavigate();
+  // const navigate = useNavigate();
 
   return (
     <Grid
       dir="rtl"
-      mt="10"
+      // mt="10"
       templateColumns="repeat(3, 1fr)"
       gap={6}
       p="10"
       templateRows="repeat(2, 1fr)"
+      bg="gray.100"
     >
       <GridItem>
         <Stack
@@ -58,7 +59,7 @@ export default function Homeustomer() {
                 rounded="full"
                 fontFamily="scheherazade"
               >
-                قسم المُقبلات
+                <Link to="/items/Appetizer"> قسم المُقبلات</Link>
               </Button>
             </Heading>
             <Stack
@@ -109,7 +110,7 @@ export default function Homeustomer() {
                 rounded="full"
                 fontFamily="scheherazade"
               >
-                قسم الأطباق الرئيسية
+                <Link to="/items/MainDishe">قسم الأطباق الرئيسية</Link>
               </Button>
             </Heading>
             <Stack
@@ -158,7 +159,7 @@ export default function Homeustomer() {
                 rounded="full"
                 fontFamily="scheherazade"
               >
-                قسم الشعبيات
+                <Link to="/items/Traditional"> قسم الشعبيات</Link>
               </Button>
             </Heading>
             <Stack
@@ -209,7 +210,7 @@ export default function Homeustomer() {
                 rounded="full"
                 fontFamily="scheherazade"
               >
-                <Link to="/Sweets">قسم الحلويات</Link>
+                <Link to="/items/Sweet">قسم الحلويات</Link>
               </Button>
             </Heading>
 
@@ -261,7 +262,7 @@ export default function Homeustomer() {
                 rounded="full"
                 fontFamily="scheherazade"
               >
-                قسم الأطباق الصحية
+                <Link to="/items/Healthy">قسم الأطباق الصحية</Link>
               </Button>
             </Heading>
 
@@ -313,7 +314,7 @@ export default function Homeustomer() {
                 rounded="full"
                 fontFamily="scheherazade"
               >
-                قسم المشروبات
+                <Link to="/items/Drink">قسم المشروبات</Link>
               </Button>
             </Heading>
 
@@ -331,6 +332,3 @@ export default function Homeustomer() {
     </Grid>
   );
 }
-// function customer() {
-//   throw new Error("Function not implemented.");
-// }

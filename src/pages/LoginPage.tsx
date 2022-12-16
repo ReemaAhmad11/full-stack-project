@@ -5,10 +5,9 @@ import {
   VStack,
   useToast,
   HStack,
-  Link,
 } from "@chakra-ui/react";
 import { useState } from "react";
-import { useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import LoginForm from "../componants/login/LoginForm";
 
 export const LoginPage = () => {
@@ -42,7 +41,7 @@ export const LoginPage = () => {
         position: "top",
       });
       localStorage.setItem("token", data.token);
-      navigate("/");
+      navigate("/Homecustomer");
     } catch (error) {
       toast({
         title: "Server Error !",
@@ -67,10 +66,7 @@ export const LoginPage = () => {
         />
         <HStack>
           <Text color={"black"}>
-            إذا لم يكن لك حساب بالفعل{" "}
-            <Link color="#079F4D" href="/userRegister">
-              اضغط هنا
-            </Link>{" "}
+            إذا لم يكن لك حساب بالفعل <Link to="/Homepage2">اضغط هنا</Link>{" "}
             للإنضمام لنا
           </Text>
         </HStack>

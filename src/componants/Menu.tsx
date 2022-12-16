@@ -27,9 +27,14 @@ import {
   HStack,
   Grid,
   Container,
+  GridItem,
 } from "@chakra-ui/react";
 import { IoIosAddCircle } from "react-icons/io";
 import { IoMdCloseCircle } from "react-icons/io";
+// import  Client  from "ftp";
+//import * as zlib from "zlib";
+//import * as fs from "fs";
+//import * as path from "path";
 
 const Menu = () => {
   const [item, setItem] = useState<string[]>([]);
@@ -38,6 +43,8 @@ const Menu = () => {
   const [price, setPrice] = useState("");
   const [type, setType] = useState("");
   const [image, setImage] = useState("");
+
+  const [filter, setFilter] = useState("Sweet");
 
   const toast = useToast();
 
@@ -50,21 +57,32 @@ const Menu = () => {
     });
     const data = await request.json();
     setItem(data);
-    console.log(data);
+    //console.log(data);
   };
 
   const addNewItem = async () => {
-    try {
-      if (!title && !description && !price && !type && !image) {
-        toast({
-          title: " all fileds are required ",
-          status: "error",
-          duration: 3000,
-          position: "top",
-        });
+    // if (image === "") {
+    //   toast({
+    //     title: " all fileds are required ",
+    //     status: "error",
+    //     duration: 3000,
+    //     position: "top",
+    //   });
 
-        return;
-      }
+    // return;
+    // }
+    if (!title && !description && !price && !type) {
+      toast({
+        title: " all fileds are required ",
+        status: "error",
+        duration: 3000,
+        position: "top",
+      });
+
+      return;
+    }
+
+    try {
       const request = await fetch("/api/v1/item", {
         method: "POST",
         headers: {
@@ -95,6 +113,7 @@ const Menu = () => {
       setTitle("");
       setDescription("");
       setPrice("");
+      onClose();
 
       console.log(data);
     } catch (error) {
@@ -146,10 +165,10 @@ const Menu = () => {
 
   const { isOpen, onOpen, onClose } = useDisclosure();
   return (
-    <>
+    <div style={{ height: "100vh" }}>
       <Box m="20" mb="1" alignItems="center" dir="rtl">
         <Button
-          bgColor={"#549A0A"}
+          bgColor={"green.500"}
           colorScheme="white"
           aria-label="Add new Post "
           onClick={onOpen}
@@ -185,13 +204,14 @@ const Menu = () => {
                     type="number"
                   />
                 </FormControl>
-                <Box paddingTop={5}>
+                <Box paddingTop={7}>
                   <Select
                     w="30"
-                    placeholder="اختر الصنف"
+                    placeholder="اختر الصنف "
                     value={type}
                     onChange={(e) => setType(e.target.value)}
                   >
+                    <Button>x</Button>
                     <option value="MainDishe">اطباق رئسية</option>
                     <option value="Appetizer">مقبلات </option>
                     <option value="Sweet">حلويات</option>
@@ -200,13 +220,118 @@ const Menu = () => {
                   </Select>
                 </Box>
                 <Box paddingTop={"10"}>
-                  <FormLabel> أضف صورة المنتج</FormLabel>
-                  <Input
-                    onChange={(e) => setImage(e.target.value)}
-                    type="file"
-                    name="image"
-                    placeholder="Image"
-                  />
+                  <FormLabel> أختر</FormLabel>
+                  <Grid
+                    templateColumns="repeat(3, 1fr)"
+                    gap={6}
+                    p="10"
+                    templateRows="repeat(1, 1fr)"
+                  >
+                    <GridItem>
+                      <Button
+                        bgColor={"#549A0A"}
+                        borderRadius="20"
+                        mr="0"
+                        color={"white"}
+                        value="Appetizer"
+                        onClick={(event) =>
+                          setImage(
+                            "https://i.pinimg.com/564x/87/e3/c9/87e3c910e90fbee4f5069dd69e28a442.jpg"
+                          )
+                        }
+                      >
+                        {" "}
+                        مقبلات{" "}
+                      </Button>
+                    </GridItem>
+                    <GridItem>
+                      <Button
+                        bgColor={"#549A0A"}
+                        mr="0"
+                        borderRadius="20"
+                        color={"white"}
+                        onClick={(event) =>
+                          setImage(
+                            "https://i.pinimg.com/474x/a1/c8/29/a1c8296178ae44dedee7202a55b4cc7d.jpg"
+                          )
+                        }
+                        value="MainDishe"
+                      >
+                        {" "}
+                        الأطباق الرئيسية{" "}
+                      </Button>
+                    </GridItem>
+
+                    <GridItem>
+                      <Button
+                        bgColor={"#549A0A"}
+                        borderRadius="20"
+                        mr="0"
+                        color={"white"}
+                        onClick={(event) =>
+                          setImage(
+                            "https://i.pinimg.com/564x/46/f4/c8/46f4c8ecd6fa719f10664dd5b958083a.jpg"
+                          )
+                        }
+                        value="Traditional"
+                      >
+                        {" "}
+                        شعبيات{" "}
+                      </Button>
+                    </GridItem>
+
+                    <GridItem>
+                      <Button
+                        bgColor={"#549A0A"}
+                        borderRadius="20"
+                        color={"white"}
+                        onClick={(event) =>
+                          setImage(
+                            "https://i.pinimg.com/564x/33/87/60/3387607cf1898e96e7344d62d7d2d91a.jpg"
+                          )
+                        }
+                        value="Sweet"
+                      >
+                        {" "}
+                        حلويات{" "}
+                      </Button>
+                    </GridItem>
+
+                    <GridItem>
+                      <Button
+                        bgColor={"#549A0A"}
+                        borderRadius="20"
+                        mr="0"
+                        color={"white"}
+                        onClick={(event) =>
+                          setImage(
+                            "https://i.pinimg.com/564x/58/dd/ef/58ddef5f6f49d4f0755c21f185fc0ce2.jpg"
+                          )
+                        }
+                        value="Healthy"
+                      >
+                        {" "}
+                        الأطباق الصحيه{" "}
+                      </Button>
+                    </GridItem>
+                    <GridItem>
+                      <Button
+                        bgColor={"#549A0A"}
+                        borderRadius="20"
+                        mr="0"
+                        color={"white"}
+                        onClick={(event) =>
+                          setImage(
+                            "https://i.pinimg.com/564x/32/d3/8c/32d38cc2a61e59f04719e3a594d8ceeb.jpg"
+                          )
+                        }
+                        value="Drink"
+                      >
+                        {" "}
+                        المشروبات{" "}
+                      </Button>
+                    </GridItem>
+                  </Grid>
                 </Box>
               </ModalBody>
 
@@ -221,7 +346,7 @@ const Menu = () => {
                   onClick={addNewItem}
                 >
                   {" "}
-                  نشر{" "}
+                  أضف{" "}
                 </Button>
               </ModalFooter>
             </ModalContent>
@@ -242,11 +367,7 @@ const Menu = () => {
             <Card maxW="sm" dir="rtl">
               <CardBody>
                 <Box marginRight={50} maxW={{ base: "100%", sm: "60%" }}>
-                  <Image
-                    src="https://i.pinimg.com/236x/32/11/6c/32116cf770ecb0e877c40d32e48a51e2.jpg"
-                    alt="Green double couch with wooden legs"
-                    borderRadius="lg"
-                  />
+                  <Image src={item.Image} borderRadius="lg" />
                 </Box>
 
                 <Stack mt="6" spacing="3">
@@ -269,7 +390,7 @@ const Menu = () => {
                       deleteItem(item.id);
                     }}
                   >
-                    Delete
+                    حذف
                     {<IoMdCloseCircle />}
                   </Button>
                 </ButtonGroup>
@@ -278,7 +399,7 @@ const Menu = () => {
           </HStack>
         ))}
       </Grid>
-    </>
+    </div>
   );
 };
 

@@ -8,7 +8,6 @@ import {
   Button,
   useToast,
   HStack,
-  Link,
 } from "@chakra-ui/react";
 import { useState } from "react";
 import {
@@ -17,7 +16,7 @@ import {
   PhoneIcon,
   EmailIcon,
 } from "@chakra-ui/icons";
-import { useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 const ProviderRegister = () => {
   const [fullname, setFullname] = useState("");
   const [username, setUsername] = useState("");
@@ -27,6 +26,7 @@ const ProviderRegister = () => {
   const [projectName, setProjectName] = useState("");
   const [password, setPassword] = useState("");
   const [password2, setPassword2] = useState("");
+  const [role, setRole] = useState();
 
   const navigate = useNavigate();
 
@@ -57,6 +57,7 @@ const ProviderRegister = () => {
           phone,
           permission: Number(permission),
           projectName,
+          role: "Provider",
         }),
       });
 
@@ -89,7 +90,7 @@ const ProviderRegister = () => {
     }
   };
   return (
-    <Flex justifyContent="center" alignItems="center" height="100vh">
+    <Flex justifyContent="center" alignItems="center" w="100vw" height="100vh">
       <VStack spacing="1rem" width="30rem" rounded="xl" p="9" boxShadow={"lg"}>
         <Heading color={"green.700"}>إنشاء حساب جديد </Heading>
         <Text>من هنا تبدأ</Text>
@@ -188,16 +189,13 @@ const ProviderRegister = () => {
               type="password"
             />
           </Box>
-          <Button onClick={submitRegister} bg="#079F4D">
-            إنشاء الحساب
-          </Button>
+          <Link to="/login">
+            <Button bg="#079F4D" onClick={submitRegister}>إنشاء الحساب</Button>
+          </Link>
         </VStack>
         <HStack>
           <Text>
-            هل لديك حساب بالفعل ؟{" "}
-            <Link color="#079F4D" href="/login">
-              تسجيل الدخول
-            </Link>{" "}
+            هل لديك حساب بالفعل ؟ <Link to="/login">تسجيل الدخول</Link>{" "}
           </Text>
         </HStack>
       </VStack>
