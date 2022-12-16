@@ -5,7 +5,7 @@ generator client {
 datasource db {
   provider     = "mysql"
   url          = env("DATABASE_URL")
-   relationMode = "prisma"
+  relationMode = "prisma"
 }
 
 model User {
@@ -17,6 +17,7 @@ model User {
   username    String @unique
   permission  Int?
   projectName String?
+  role        Role   
   item Item[]
 // payment     String
 }
@@ -29,7 +30,7 @@ model Item {
   productDescription String
   productPrice       Int
   productType        Type 
-  Image              String?
+  Image              String
   user_id            String
   user User @relation(fields: [user_id],references: [id])
   @@index([user_id])
@@ -42,4 +43,9 @@ enum Type {
   Drink
   Healthy
   Appetizer
+}
+
+enum Role {
+  Visitor
+  Provider
 }

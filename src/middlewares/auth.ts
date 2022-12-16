@@ -3,6 +3,8 @@ import * as jwt from "jsonwebtoken";
 
 export interface IUser {
   id: string;
+  role: string;
+  iat: number;
 }
 
 export const protect = (req: Request, res: Response, next: NextFunction) => {
@@ -28,3 +30,14 @@ export const protect = (req: Request, res: Response, next: NextFunction) => {
     });
   }
 };
+
+export const authorize =
+  (role: string) => (req: Request, res: Response, next: NextFunction) => {
+    const user = res.locals.user as IUser;
+    if (user.role !== role) {
+      return res
+        .status(403)
+        .json({ message: "You are not allowed to access this route ! " });
+    }
+    next();
+  };

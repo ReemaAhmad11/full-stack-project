@@ -1,4 +1,4 @@
-import { Item } from "@prisma/client";
+import { Item, Type } from "@prisma/client";
 import { Request, Response } from "express";
 import { prisma } from "../config/db";
 import { IUser } from "../middlewares/auth";
@@ -16,12 +16,24 @@ export const getAllItemHandler = async (req: Request, res: Response) => {
   // here is problem
   return res.status(200).json(itemList);
 };
+export const getAllItemByNameHandler = async (req: Request, res: Response) => {
+  const user = res.locals.user as IUser;
+
+  const { name } = req.params;
+
+  const type = name as Type;
+
+  const itemList = await prisma.item.findMany({
+    where: { productType: type },
+  });
+  // here is problem
+  return res.status(200).json(itemList);
+};
 
 export const addItemHandler = async (req: Request, res: Response) => {
   const { productName, productDescription, productPrice, productType, Image } =
     req.body as Item;
   const user = res.locals.user as IUser;
-  console.log(user, "sssss");
   console.log("req.body", req.body);
 
   await prisma.item.create({

@@ -30,7 +30,7 @@ export const Item = z.object({
       "Healthy",
       "Appetizer",
     ]),
-    Image: z.string().nullish(),
+    Image: z.string(),
   }),
 });
 
